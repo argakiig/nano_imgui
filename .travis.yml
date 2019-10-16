@@ -1,0 +1,38 @@
+language: cpp
+
+stages:
+  - artifacts
+jobs:
+  include:
+    - stage: artifacts
+      name: "linux"
+      os: linux
+      dist: xenial
+      compiler: gcc
+      before_install:
+        - sudo apt-get update -y && sudo apt-get install -y ccache cmake 
+      script:
+        - mkdir build; pushd build; cmake .. -DCMAKE_CXX_COMPILER_LAUNCHER=ccache; cmake --build . --target nano_imgui --config Release -- -j2; popd
+    - name: "osx"
+      os: osx
+      compiler: clang
+      before_install:
+        - brew update;
+        - brew cask install xquartz;
+        - brew upgrade cmake;
+      install:
+        - brew install ccache;
+        - export PATH="/usr/local/opt/ccache/libexec:$PATH";
+      script:
+        - mkdir build; pushd build; cmake .. -DCMAKE_CXX_COMPILER_LAUNCHER=ccache; cmake --build . --target nano_imgui --config Release -- -j2; popd
+    - name: "windows"
+      os: windows
+      cache:
+        - ccache: false
+      script:
+        - mkdir build; pushd build; cmake .. -G"Visual Studio 15 2017" -A"x64"; cmake --build . --target nano_imgui --config Release -- -m:2; popd
+cache:
+  - ccache: true
+  - directories:
+    - $HOME/.local
+    - $HOME/Library/Caches/Homebrew

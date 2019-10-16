@@ -1,0 +1,17 @@
+[submodule "deps/imgui"]
+	path = deps/imgui
+	url = https://github.com/ocornut/imgui
+[submodule "deps/cpptoml"]
+	path = deps/cpptoml
+	url = https://github.com/cryptocode/cpptoml.git
+[submodule "deps/spdlog"]
+	path = deps/spdlog
+	url = https://github.com/gabime/spdlog.git
+[submodule "deps/glfw"]
+	path = deps/glfw
+	url = https://github.com/glfw/glfw.git
+	branch = master
+[submodule "deps/glad"]
+	path = deps/glad
+	url = https://github.com/Dav1dde/glad.git
+	branch = c
