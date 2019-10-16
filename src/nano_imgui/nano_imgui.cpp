@@ -92,9 +92,6 @@ int main (int, char **)
 	ImGui_ImplGlfw_InitForOpenGL (window, true);
 	ImGui_ImplOpenGL3_Init (glsl_version);
 
-	ImFont * font = io.Fonts->AddFontFromFileTTF ("../../deps/Fira_Mono/ttf/FiraMono-Medium.ttf", 16.0f);
-	IM_ASSERT (font != NULL);
-
 	static int accounts_state = 0;
 	static int advanced_state = 0;
 	static int menu_state = 0;
