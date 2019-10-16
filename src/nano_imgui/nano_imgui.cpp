@@ -2,8 +2,9 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
-#include <stdio.h>
 #include <string>
+
+#include <stdio.h>
 
 #if defined(IMGUI_IMPL_OPENGL_LOADER_GL3W)
 #include <GL/gl3w.h> // Initialize with gl3wInit()
@@ -99,7 +100,7 @@ int main (int, char **)
 	static int menu_state = 0;
 	static int settings_state = 0;
 	static int scale_state = 1;
-	
+
 	ImVec4 clear_color = ImVec4 (0.45f, 0.55f, 0.60f, 1.00f);
 
 	while (!glfwWindowShouldClose (window))
@@ -150,13 +151,15 @@ int main (int, char **)
 				ImGui::RadioButton ("Block Viewer", &advanced_state, 7);
 				ImGui::RadioButton ("Account Viewer", &advanced_state, 8);
 				ImGui::RadioButton ("Node Statistics", &advanced_state, 9);
-				ImGui::Text("Scale\t");
-				ImGui::RadioButton ("Mnano", &scale_state, 30); ImGui::SameLine();
-				ImGui::RadioButton ("knano", &scale_state, 27); 
-				ImGui::RadioButton ("nano", &scale_state, 24); ImGui::SameLine();
-				ImGui::RadioButton ("raw", &scale_state, 1); 
-				auto scale ("1x10^" + std::to_string(scale_state) + " raw");
-				ImGui::Text(scale.c_str());
+				ImGui::Text ("Scale\t");
+				ImGui::RadioButton ("Mnano", &scale_state, 30);
+				ImGui::SameLine ();
+				ImGui::RadioButton ("knano", &scale_state, 27);
+				ImGui::RadioButton ("nano", &scale_state, 24);
+				ImGui::SameLine ();
+				ImGui::RadioButton ("raw", &scale_state, 1);
+				auto scale ("1x10^" + std::to_string (scale_state) + " raw");
+				ImGui::Text (scale.c_str ());
 				break;
 		}
 		ImGui::EndChild ();
