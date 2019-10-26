@@ -1,5 +1,11 @@
 make_executable()
 
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+set(Boost_USE_STATIC_LIBS        ON)
+set(Boost_USE_MULTITHREADED      ON)
+find_package (Boost 1.67.0 REQUIRED COMPONENTS filesystem thread program_options system)
+
 add_definitions(-DIMGUI_IMPL_OPENGL_LOADER_GLAD)
 
 include_directories(
@@ -12,6 +18,10 @@ include_directories(
     )
     
 target_link_libraries(${PROJECT}
+    Boost::filesystem
+    Boost::program_options
+    Boost::boost
+    Threads::Threads
     ${OPENGL_LIBRARIES}
     ${GLFW_LIBRARIES}
     ${GLAD_LIBRARIES}

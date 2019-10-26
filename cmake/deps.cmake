@@ -12,3 +12,6 @@ endif ()
 include(cmake/glad.cmake)
 include(cmake/glfw.cmake)
 include(cmake/imgui.cmake)
+
+include_directories(deps/spdlog/include)
+include_directories(deps/cpptoml/include)

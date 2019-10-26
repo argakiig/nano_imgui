@@ -19,6 +19,9 @@ macro(make_project_)
     if(MSVC)
         add_definitions(
             -D_USE_MATH_DEFINES
+            -DBOOST_ALL_NO_LIB
+            -D_WIN32_WINNT=0x0600
+            -DWINVER=0x0600
             )
     endif()
     
